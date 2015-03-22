@@ -13,14 +13,14 @@ Course Project: Getting and Cleaning Data
 ####I saved this data and worked within the local directory.
 info obtained from the URL: ####https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
 
-<blockquote><p>Level one</p>
+'''
 getwd()
 ls()
 
 features<-read.table("features.txt")
 head(features)
+'''
 
-</blockquote>
 ##Read X Values
 testx<-read.table("./test/X_test.txt", col.names=features[,2])
 trainx<-read.table("./train/X_train.txt", col.names=features[,2])
