@@ -1,51 +1,50 @@
 # RunAnalysis
 Course Project: Getting and Cleaning Data
-##You should create one R script called run_analysis.R that does the following. 
-##1.Merges the training and the test sets to create one data set.
-##2.Extracts only the measurements on the mean and standard deviation for each measurement. 
-##3.Uses descriptive activity names to name the activities in the data set
-##4.Appropriately labels the data set with descriptive variable names. 
-##5.From the data set in step 4, creates a second, independent tidy data set with the average of each variable for 
-##each activity and each subject.
+### You should create one R script called run_analysis.R that does the following. 
+* Merges the training and the test sets to create one data set.
+* Extracts only the measurements on the mean and standard deviation for each measurement. 
+* Uses descriptive activity names to name the activities in the data set
+* Appropriately labels the data set with descriptive variable names. 
+* From the data set in step 4, creates a second, independent tidy data set with the average of each variable for 
+each activity and each subject.
 
-##1.Merges the training and the test sets to create one data set.
+### 1.Merges the training and the test sets to create one data set.
 ###Begin by reading in Data from files, 
-####I saved this data and worked within the local directory.
-info obtained from the URL: ####https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+I saved this data and worked within the local directory.
+info obtained from the URL:https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
 
-'''
-getwd()
-ls()
 
-features<-read.table("features.txt")
-head(features)
-'''
+    getwd()
+    ls()
+    features<-read.table("features.txt")
+    head(features)
 
-##Read X Values
-testx<-read.table("./test/X_test.txt", col.names=features[,2])
-trainx<-read.table("./train/X_train.txt", col.names=features[,2])
-subjecttrain<-read.table("./train/subject_train.txt", header=FALSE)
-dim(testx)
-dim(trainx)
 
-##Read Y Values
-trainy<-read.table("./train/Y_train.txt", col.names=c("activity"))
-testy<-read.table("./test/Y_test.txt", col.names=c("activity"))
-subjecttest<-read.table("./test/subject_test.txt", header=FALSE)
-dim(trainy)
-dim(testy)
+##### Read X Values
+    testx<-read.table("./test/X_test.txt", col.names=features[,2])
+    trainx<-read.table("./train/X_train.txt", col.names=features[,2])
+    subjecttrain<-read.table("./train/subject_train.txt", header=FALSE)
+    dim(testx)
+    dim(trainx)
 
-###Combine the X Data into one set
-xdata<-rbind(testx,trainx)
-dim(xdata)
+#### Read Y Values
+    trainy<-read.table("./train/Y_train.txt", col.names=c("activity"))
+    testy<-read.table("./test/Y_test.txt", col.names=c("activity"))
+    subjecttest<-read.table("./test/subject_test.txt", header=FALSE)
+    dim(trainy)
+    dim(testy)
 
-###Combine the Y Data into one set
-ydat<-rbind(testy,trainy)
-dim(ydat)
+#### Combine the X Data into one set
+    xdata<-rbind(testx,trainx)
+    dim(xdata)
+
+#### Combine the Y Data into one set
+    ydat<-rbind(testy,trainy)
+    dim(ydat)
 
 ###Combine Subject info
-subject<-rbind(subjecttest,subjecttrain)
-dim(subject)
+    subject<-rbind(subjecttest,subjecttrain)
+    dim(subject)
 
 ##Apply Column Names
 colnames(subject)<- "Subject"
